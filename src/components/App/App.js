@@ -2,6 +2,7 @@ import './app.css';
 import api from '../../api/api';
 import Main from '../Main/Main.js';
 import Photo from '../Photo/Photo.js';
+import NotFound from '../NotFound/NotFound.js';
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom'
 
@@ -50,6 +51,10 @@ function App() {
         </Route>
         <Route path="/photo/:id">
           <Photo getPhoto={getPhotoById} />
+        </Route>
+        {/* Если мы не перешли ни по одному адресу до данного компонента, блвгодаря Swith выполнится NotFound*/}
+        <Route path="*">
+          <NotFound />
         </Route>
       </Switch>
     </div>
