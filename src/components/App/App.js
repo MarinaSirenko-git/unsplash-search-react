@@ -1,7 +1,9 @@
 import './app.css';
 import api from '../../api/api';
 import Main from '../Main/Main.js';
-import { useEffect, useState } from 'react'
+import Photo from '../Photo/Photo.js';
+import { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom'
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('night city')
@@ -32,12 +34,24 @@ function App() {
     setSearchQuery(value)
   }
 
+  const getPhotoById = (id) => {
+    return cards.find((photo) => photo.id === id)
+  }
+
   return (
     <div className="app">
-      <Main
-        handleFormSubmit={handleFormSubmit}
-        isLoading={isLoading}
-        cards={cards} />
+      <Switch>
+        <Route path="/" exact>
+          <Main
+            handleFormSubmit={handleFormSubmit}
+            isLoading={isLoading}
+            cards={cards} 
+          />
+        </Route>
+        <Route path="/photo/:id">
+          <Photo getPhoto={getPhotoById} />
+        </Route>
+      </Switch>
     </div>
   );
 }
