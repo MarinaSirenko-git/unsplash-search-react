@@ -23,4 +23,4 @@
 10. Обернём роуты в `<Switch>`
 
 ---
-ссылка на проект https://marinasirenko-git.github.io/unsplash-search-react/#/
+Cсылка на проект https://marinasirenko-git.github.io/unsplash-search-react/#/
