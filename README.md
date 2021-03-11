@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+### Задачи проекта
+1. Разбить макет на компоненты - главный компонент, строка поиска, кнопка поиска, группа изображений, 404 страница, отдельная страница изображения. Добавить стили
+2. Для работы с API создать класс с нужными методами
+3. Реализовать возможности: вводим в поле поиска ключевое слово, нажимаем кнопку Search, получаем обновленные изображения. Выдача по умолчанию `night city`
+4. Показывать текст `Loading...`, пока ждем ответ от сервера
+5. Реализовать маршрутизацию. По клику на изображение переходить на новую страницу
+6. Реализовать страницу 404, если пользователь ввел не существующий URL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Инструменты проекта
+`Create React App`, `Unsplash API`, `react-router`, `CSS Flexbox`
 
-## Available Scripts
+### Решение
+1. Создадим директорию components, в которой для удобства и порядка создадим под каждый компонент папку, поместим в неё сам компонент и его стили.
+2. Создадим класс api, который будет принимать объект настроек (url, token), обратимся к документации [Unsplash](https://unsplash.com/developers), напишем запрос, создим экземпляр класса, экспортируем его. И обращаемся к нему из любого компонента.
+3. Используем только функциональные компонеты. Компонент App. 
+Добавим стейт переменную `searchQuery`, которая хранит ключевое слово, меняется по событию Submit формы, 
+получая введенное значение в инпут. Хук useEffect отслеживает изменение стейт переменной и при её изменении посылает новый запрос на сервер.
+Добавим стейт переменную `cards` и после успешного ответа сервера меняем значение `cards`. Происходит рендеринг.
+4. Добавим флаг `isLoading` в App и будем менять его значение на этапе рендеринга в запросе к серверу. 
+5. Компонент Main. Передадим обработчик формы и данные из компонента App.
+Вернем разметку страницы. Напишем логику работы с контролируемым компонентом Input и обработчик формы onSubmit.
+6. Глупые компоненты - Button, Card, NotFound. Передадим в них данные и колбеки через props.
+7. Установим библиотеку `React Router`. Обернём компонент App в `BrowserRouter`, а Main в `<Route path="/" exact>`
+8. Создадим компонент страницы Photo, обернём в `<Route path="/photos/:id">`, получим id с помощью хука `useParams()`, получим данные по id и отобразим.
+9. Создадим компонент страницы 404 - NotFound. В App подключим NotFound обернув в `<Route path="*">`
+10. Обернём роуты в `<Switch>`
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

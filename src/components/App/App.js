@@ -52,7 +52,7 @@ function App() {
         <Route path="/photo/:id">
           <Photo getPhoto={getPhotoById} />
         </Route>
-        {/* Если мы не перешли ни по одному адресу до данного компонента, блвгодаря Swith выполнится NotFound*/}
+        {/* Если мы не перешли ни по одному адресу до данного компонента, благодаря Swith выполнится NotFound*/}
         <Route path="*">
           <NotFound />
         </Route>

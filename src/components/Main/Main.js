@@ -1,6 +1,6 @@
 // Вынесем излишний код и логику работы формы из App в данный ф-й компонент
 import './Main.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Card from '../Card/Card.js'
 import Input from '../Input/Input.js'
 import Button from '../Button/Button.js'

@@ -1,6 +1,5 @@
 import "./Photo.css";
 
-import {useEffect, useState} from 'react';
 import {useParams, Link} from "react-router-dom";
 
 function Photo({getPhoto}) {
